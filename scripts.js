@@ -61,10 +61,64 @@ relationships.matches = matches;
 
 relationships.matches.push(animals[2].username);
 
-animals.forEach(function (elem) {elem.relationships = relationships});
+animals.forEach(function (elem) {
+    elem.relationships = relationships
+});
 // End Nested Data Exercise -----------------------------
 
 
-// Functional Exercise ----------------------------------
+// Function Exercise ------------------------------------
+function AnimalTestUser(username) {
+    var user = {username: username};
+    if (arguments.length > 1) {
+        user.otherArgs = Array.prototype.slice.call(arguments, 1);
+    }
+    return user;
+}
 
-// End Functional Exercise ------------------------------
+var testSheep = AnimalTestUser("CottonBall", {"Loves Dancing": true}, [1, 2, 3]);
+console.log(testSheep);
+
+function AnimalCreator(username, species, tagline, noises) {
+    return {
+        username: username,
+        species: species,
+        tagline: tagline,
+        noises: noises,
+        friends: []
+    };
+}
+
+function addFriend(animal, friend) {
+    animal.friends.push(friend.username);
+}
+
+function addMatchesArray(animalArray) {
+    animalArray.forEach(function(elem) {return elem.matches = []});
+}
+
+function giveMatches(animalArray) {
+    animalArray.forEach(function(elem) {return elem.matches.push(animalArray[Math.floor(Math.random() * animalArray.length)].username)});
+}
+
+var myFarm = [
+    AnimalCreator('Cloud', 'sheep', 'You can count on me!', ['baahhh', 'arrgg', 'chewchewchew']),
+    AnimalCreator('Milky', 'cow', 'I love me some beef!', ['moo', 'yummy!', 'are you gonna eat that?']),
+    AnimalCreator('Cocky', 'chicken', 'I taste like chicken!', ['b-gawk', 'cock-a-doodle-do', 'peck'])
+];
+
+addFriend(myFarm[0], myFarm[1]);
+addFriend(myFarm[0], myFarm[2]);
+addMatchesArray(myFarm);
+giveMatches(myFarm);
+
+console.log(myFarm[0]);
+// End Function Exercise --------------------------------
+
+
+
+
+
+
+
+
