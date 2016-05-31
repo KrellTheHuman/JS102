@@ -33,11 +33,35 @@ var quackers = {
     noises: ['quack', 'honk', 'sneeze', 'growl']
 };
 animals[animals.length] = quackers;
+animals.push({
+    username: 'MorrisMoose',
+    tagline: 'No fair!',
+    noises: ['mlaaargh', 'meep', 'momp', 'mooooooph']
+});
+animals.push({
+    username: 'Clippy',
+    tagline: 'Would you like help?',
+    noises: ['boing', 'ping', 'yoing', 'sorry!']
+});
+
 // End Array Exercise -----------------------------------
 
 
 // Nested Data Exercise ---------------------------------
+var friendsList = [];
+var friends = friendsList;
+friends.push(animals[1].username);
+friends.push(animals[3].username);
 
+var relationships = {};
+relationships.friends = friends;
+
+var matches = [];
+relationships.matches = matches;
+
+relationships.matches.push(animals[2].username);
+
+animals.forEach(function (elem) {elem.relationships = relationships});
 // End Nested Data Exercise -----------------------------
 
 
